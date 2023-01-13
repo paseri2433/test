@@ -18,7 +18,7 @@ YOUR_CHANNEL_ACCESS_TOKEN = "eGzGOuKskF0sEl+T6b/G9QcV1LXRJCXhMsFcXAydgQx7DJf3eeT
 YOUR_CHANNEL_SECRET = "b46a202827ac29a95d363d2b2343867e"
 
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
-handler = WebhookHandler(YOUR_CHANNEL_SECRET)
+handl = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -36,7 +36,7 @@ def callback():
     # handle webhook body
     try:
         print(5.1)
-        handler.handle(body, signature)
+        handl.handle(body, signature)
         print(5)
     except InvalidSignatureError:
         print(6.1)
@@ -47,7 +47,7 @@ def callback():
     print(10)
 
 
-@handler.add(MessageEvent, message=TextMessage)
+@handl.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     print(7)
     line_bot_api.reply_message(
